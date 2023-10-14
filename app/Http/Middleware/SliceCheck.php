@@ -21,11 +21,6 @@ class SliceCheck
         $from = $request->query('from');
         $to = $request->query('to');
 
-        // dd(
-        //     '???',
-        //     Cache::get("$from:$to")
-        // );
-
         if (Cache::has("$from:$to")) {
             $data['source'] = Source::CACHE;
             $data['fib_slice'] = (Cache::get("$from:$to"));
@@ -34,8 +29,6 @@ class SliceCheck
         }
 
         $response = $next($request);
-
-        // Cache::put("$from:$to", $response->getContent());
 
         return $response;
     }
