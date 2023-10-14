@@ -7,5 +7,26 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About App
+
+- первое: склонировать репозиторий $ git clone https://github.com/vivelekostas/fib_app.git
+
+- второе: перейти в директорию с проектом $ cd fib_app 
+
+- третье: установить зависимости
+  $ docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php82-composer:latest \
+    composer install --ignore-platform-reqs
+
+- четвёртое: поднять контейнер  $ ./vendor/bin/sail up -d
+
+- пятое: отправить через postman тестовый запрос http://127.0.0.1:80/api/number_series?from=4&to=6
+  Перый раз ответ придёт из контроллера, второй уже из кеша.
+
+  Из фреймворка удаленно практически всё, что возможно из того, что не касается непосредственно одного единственного маршрута и связанной с ним логики. 
+
+  * <b>алогритм установки актуален для Windows c Docker Desktop и WSL</b>
 
